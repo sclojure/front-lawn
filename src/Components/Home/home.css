@@ -26,6 +26,11 @@
     -webkit-box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
+    transition: all 0.25s;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    color: #484848;
 }
 
 .explore-cabins-container {
@@ -39,6 +44,10 @@
     -moz-box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
     margin-left: 5%;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    color: #484848;
 }
 
 .explore-condo-pic {
