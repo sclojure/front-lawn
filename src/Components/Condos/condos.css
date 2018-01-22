@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
 .featured-condos-title {
-    width: 80vw;
+    width: 80%;
     height: auto;
     margin: auto;
     font-family: 'Roboto Condensed', sans-serif;
@@ -10,7 +10,7 @@
 }
 
 .featured-condos-container {
-    width: 80vw;
+    width: 80%;
     height: auto;
     margin: auto;
     display: flex;

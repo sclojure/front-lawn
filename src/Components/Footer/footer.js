@@ -6,7 +6,7 @@ export default class Footer extends Component {
         return (
             <div>
                 <div className="gray-dividing-line" />
-                <div className="first-footer-container">
+                <div className="first-footer-container" id="footer-1">
                     <div className="inner-footer-container">
                         <div className="first-footer-div">
                             <select id="language" className="footer-select-1">
@@ -65,7 +65,7 @@ export default class Footer extends Component {
                     </div>
 
                 </div>
-                <div className="skinny-footer-container">
+                <div className="skinny-footer-container" id="footer-2">
                     <div className="skinny-footer-left-div">
                         <div className="little-logo"> </div>
                         <div>©</div>

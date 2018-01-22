@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import Home from '../Home/home'
 import "./condos.css"
 
 export default class Condos extends Component {
     render() {
         return (
             <div>
+                <Home />
                 <div className="featured-condos-title">
                     <h1>Featured Condos</h1>
                 </div>

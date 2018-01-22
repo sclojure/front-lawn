@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import HomeMain from '../Home-Main/home-main'
 import './home.css'
 
 export default class Home extends Component {
     render() {
         return (
             <div>
+                <HomeMain />
                 <div className="explore-container">
                     <h1 className="housebnb-text-2">Explore Housebnb</h1>
                     <div className="explore-pictures-container">
