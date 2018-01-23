@@ -33,19 +33,62 @@ class Header extends Component {
     render() {
         return (
             <div>
-                 <div className="help-menu-off" id="help-menu">
-                                <div className="help-menu-header">
-                                <div className="help-menu-title">Airbnb Help</div>
-                                <div className="help-menu-title" onClick={() => this.helpClose()}>X</div>
-                                </div>
-                                </div>
+                <div className="help-menu-off" id="help-menu">
+                    <div className="help-menu-header">
+                        <div className="help-menu-title">Airbnb Help</div>
+                        <div className="help-menu-title" onClick={() => this.helpClose()}>X</div>
+                    </div>
+                    <div className="help-input-container">
+                    <div className="help-input-box">
+                    <div className="help-glass-icon" />
+                    <input placeholder="Ask a question or search by keyword."></input>
+                    </div>
+                    </div>
+                    <div className="suggested-articles-container">
+                    <div>Suggested Articles</div>
+                    <div className="suggested-article">
+                    <div className="article-title">Getting Started Guide</div>
+                    <div>➡</div>
+                    </div>
+                    <div className="suggested-article">
+                    <div className="article-title">How is the price determined for my reservation?</div>
+                    <div>➡</div>
+                    </div>
+                    <div className="suggested-article">
+                    <div className="article-title">I'm a host. How do I make a change to a confirmed reservation?</div>
+                    <div>➡</div>
+                    </div>
+                    <div className="suggested-article">
+                    <div className="article-title">How does Airbnb handle security deposits?</div>
+                    <div>➡</div>
+                    </div>
+                    <div className="suggested-article">
+                    <div className="article-title">How do I create an account?</div>
+                    <div>➡</div>
+                    </div>
+                    <div className="suggested-article">
+                    <div className="article-title">Can I pay with any currency?</div>
+                    <div>➡</div>
+                    </div>
+                    </div>
+                    <div className="visit-help-container">
+                    <div className="visit-help-button">
+                    <div>Visit the Help Center</div>
+                    </div>
+                    <div className="article-title">Give feedback</div>
+                    </div>
+                </div>
                 <div className="header-container">
                     <div className="header-bar">
                         <div className="housebnb-logo">
                         </div>
                         <div className="condos-search-bar-off" id="search-bar">
                             <div className="glass-icon" />
-                            <input placeHolder="Anywhere • Condos"></input>
+                            <input placeholder="Anywhere • Condos"></input>
+                        </div>
+                        <div className="room-search-bar-off" id="room-search-bar">
+                            <div className="glass-icon" />
+                            <input placeholder="Search"></input>
                         </div>
                         <div className="header-menu" id="header-menu">
                             <div className="header-menu-item" onMouseOver={() => this.becomeHostHover()} onMouseLeave={() => this.becomeHostOff()}>

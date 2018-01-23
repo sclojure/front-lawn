@@ -27,8 +27,11 @@ export default class SearchCondos extends Component {
                     <div className="search-condos-left">
                         <div className="search-condos-item">
                             <div className="search-condos-picture">
-                            <div className="left-arrow-off" id={this.state.hover}>⇚</div>
-                            <div className="right-arrow-off" id={this.state.hover}>⇛</div>
+                            <div className="heart-on">
+                            ♡
+                            </div>
+                                <div className="left-arrow-off" id={this.state.hover}>⇚</div>
+                                <div className="right-arrow-off" id={this.state.hover}>⇛</div>
                             </div>
                             <div className="search-condo-rooms-font">2 BEDS, 1 BATH</div>
                             <div className="search-condo-name-font">Vestibulum elementum</div>
@@ -43,8 +46,11 @@ export default class SearchCondos extends Component {
                         </div>
                         <div className="search-condos-item">
                             <div className="search-condos-picture">
-                            <div className="left-arrow-off" id="left-arrow">⇚</div>
-                            <div className="right-arrow-off" id="right-arrow">⇛</div>
+                            <div className="heart-on">
+                            ♡
+                            </div>
+                                <div className="left-arrow-off" id="left-arrow">⇚</div>
+                                <div className="right-arrow-off" id="right-arrow">⇛</div>
                             </div>
                             <div className="search-condo-rooms-font">2 BEDS, 1 BATH</div>
                             <div className="search-condo-name-font">Vestibulum elementum</div>
@@ -59,8 +65,11 @@ export default class SearchCondos extends Component {
                         </div>
                         <div className="search-condos-item">
                             <div className="search-condos-picture">
-                            <div className="left-arrow-off" id="left-arrow">⇚</div>
-                            <div className="right-arrow-off" id="right-arrow">⇛</div>
+                            <div className="heart-on">
+                            ♡
+                            </div>
+                                <div className="left-arrow-off" id="left-arrow">⇚</div>
+                                <div className="right-arrow-off" id="right-arrow">⇛</div>
                             </div>
                             <div className="search-condo-rooms-font">2 BEDS, 1 BATH</div>
                             <div className="search-condo-name-font">Vestibulum elementum</div>
@@ -75,8 +84,11 @@ export default class SearchCondos extends Component {
                         </div>
                         <div className="search-condos-item">
                             <div className="search-condos-picture">
-                            <div className="left-arrow-off" id="left-arrow">⇚</div>
-                            <div className="right-arrow-off" id="right-arrow">⇛</div>
+                            <div className="heart-on">
+                            ♡
+                            </div>
+                                <div className="left-arrow-off" id="left-arrow">⇚</div>
+                                <div className="right-arrow-off" id="right-arrow">⇛</div>
                             </div>
                             <div className="search-condo-rooms-font">2 BEDS, 1 BATH</div>
                             <div className="search-condo-name-font">Vestibulum elementum</div>
@@ -91,7 +103,7 @@ export default class SearchCondos extends Component {
                         </div>
                     </div>
                     <div className="search-condos-right">
-                    yes
+                        yes
                     </div>
                 </div>
                 <div className="search-condos-footer-container">Enter dates to see full pricing. Additional fees apply. Taxes may be added.</div>

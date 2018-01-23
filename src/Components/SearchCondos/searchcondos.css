@@ -42,7 +42,8 @@
     background-repeat: no-repeat;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    flex-flow: column;
 }
 
 .search-condo-rooms-font {
@@ -98,7 +99,17 @@
     color: #484848;
 }
 
-.search-heart {
+.heart-on {
+    width: 15%;
+    height: 15%;
+    color: #990000;
+    top: 50%;
+    right: 50%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .left-arrow-off {

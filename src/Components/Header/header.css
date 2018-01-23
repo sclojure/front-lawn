@@ -91,6 +91,15 @@ textarea:focus, input:focus{
     background-position: center;
 }
 
+.help-glass-icon {
+    width: 15%;
+    height: 65%;
+    background-image: url('https://vignette.wikia.nocookie.net/adeles/images/5/58/Magnifying_glass.png/revision/latest?cb=20170114221923');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .housebnb-text {
     color: #FF5A5F;
     font-family: 'Roboto Condensed', sans-serif;
@@ -127,7 +136,20 @@ textarea:focus, input:focus{
 
 .condos-search-bar {
     width: 35%;
-    height: 75%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    -webkit-box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
+}
+
+.room-search-bar-on {
+    width: 30%;
+    height: 50%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -139,8 +161,24 @@ textarea:focus, input:focus{
     box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.75);
 }
 
+.room-search-bar-on > input {
+    width: 50%;
+    height: 80%;
+    border: 1px solid white;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.room-search-bar-off > input {
+    display: none;
+}
+
+.room-search-bar-off {
+    display: off;
+}
+
 .condos-search-bar > input {
-    width: 50;
+    width: 50%;
     height: 80%;
     border: 1px solid white;
     font-size: 20px;
@@ -209,8 +247,89 @@ textarea:focus, input:focus{
 }
 
 .help-menu-title {
-    color: #484848;
+    color: #888888;
     font-size: 20px;
     font-family: 'Roboto Condensed', sans-serif;
+    cursor: pointer;
+}
+
+.help-input-container {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-input-box {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid  #D3D3D3;
+
+}
+
+.help-input-box > input {
+    width: 80%;
+    height: 80%;
+    font-size: 16px;
+    color:  #888888;
+    border: 1px solid white;
+}
+
+.suggested-articles-container {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    margin: auto;
+    color: #888888;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.suggested-article {
+    width: 100%;
+    height: 10%;
+    color: #888888;
+    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.article-title:hover {
+    text-decoration: underline;
+}
+
+.visit-help-container {
+    width: 100%;
+    height: 20%;
+    background-color: pink;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: column;
+    color: teal;
+    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.visit-help-button {
+    width: 80%;
+    height: 50%;
+    background-color: teal;
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
