@@ -1,18 +1,24 @@
-.search-header {
+.search-container {
     width: 100%;
     height: 75px;
+    border-top: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.search-header {
+    width: 80%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #D3D3D3;
-    border-bottom: 1px solid #D3D3D3;
+    margin: auto;
 }
 
 .search-header-left {
     width: 50%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -30,6 +36,7 @@
     font-family: 'Roboto Condensed', sans-serif;
     color: #484848;
     cursor: pointer;
+    text-align: center;
 }
 
 .dates-box:hover {

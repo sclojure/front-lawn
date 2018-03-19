@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './searchcondos.css'
+import axios from 'axios'
 
 import SearchHeader from '../SearchHeader/searchheader'
 
@@ -8,7 +9,11 @@ export default class SearchCondos extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hover: ''
+            hover: '',
+            address: 'California',
+            lat: "40.761806",
+            long: "-111.890534",
+            size: "600x600"
         }
     }
 
@@ -18,6 +23,30 @@ export default class SearchCondos extends Component {
         footer1.style = "display: none;"
         footer2.style = "display: none;"
     }
+
+    addressInput(e) {
+        this.setState({address: e}, () => console.log(this.state))
+    }
+
+    getLat() {
+        var HttpClient = function() {
+            this.get = function(aUrl, aCallback) {
+                var anHttpRequest = new XMLHttpRequest();
+                anHttpRequest.onreadystatechange = function() { 
+                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                        aCallback(anHttpRequest.responseText);
+                }
+        
+                anHttpRequest.open( "GET", aUrl, true );            
+                anHttpRequest.send( null );
+            }
+        }
+
+        var client = new HttpClient();
+        client.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=AIzaSyAgIZ-A0dS_YP6vEoa7C3To4go4jlAhJ_g`, (response) => {
+            response = JSON.parse(response)
+            this.setState({lat: response.results[0].geometry.location.lat, long: response.results[0].geometry.location.lng}, () => console.log(this.state))
+        })}
 
     render() {
         return (
@@ -103,7 +132,9 @@ export default class SearchCondos extends Component {
                         </div>
                     </div>
                     <div className="search-condos-right">
-                        yes
+                        <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.lat},${this.state.long}&zoom=13&size=${this.state.size}&maptype=roadmap&markers=color:green%7Clabel:G%7C41.242064,-111.947893&key=AIzaSyAVpnn99NumKKO-dn2bvgA6PC4fDFB3pTs`} />
+                        <input onChange={(event) => this.addressInput(event.target.value)}></input>
+                        <button onClick={() => this.getLat()}>Button</button>
                     </div>
                 </div>
                 <div className="search-condos-footer-container">Enter dates to see full pricing. Additional fees apply. Taxes may be added.</div>

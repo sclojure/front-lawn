@@ -7,11 +7,13 @@ import Footer from './Components/Footer/footer'
 import Home from './Components/Home/home'
 import SearchCondos from './Components/SearchCondos/searchcondos'
 import Room from './Components/Room/room'
+import Host from './Components/Host/host.js'
 
 export default (
   <Switch>
     <Route component={Condos} path="/" exact/>
     <Route component={SearchCondos} path="/search-condos"/>
     <Route component={Room} path="/room"/>
+    <Route component={Host} path="/host"/>
   </Switch>
 )

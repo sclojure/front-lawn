@@ -10,7 +10,7 @@ export default class SearchHeader extends Component {
     
     render() {
         return (
-            <div>
+            <div className="search-container">
                 <div className="search-header">
                     <div className="search-header-left">
                         <div className="dates-box">
@@ -33,7 +33,7 @@ export default class SearchHeader extends Component {
                         </div>
                     </div>
                     <div className="search-header-right">
-                    1 recently viewed home 🡻
+                    1 recently viewed home
                     </div>
                 </div>
             </div>

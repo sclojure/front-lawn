@@ -1,9 +1,10 @@
 .search-condos-container {
-    width: 100%;
+    width: 80%;
     height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    margin: auto;
 }
 
 .search-condos-left {
@@ -18,15 +19,14 @@
 .search-condos-right {
     width: 40%;
     height: 100vh;
-    background-image: url('https://images-na.ssl-images-amazon.com/images/I/81khu4iOs4L._SL1500_.jpg');
-    background-size: contain;
+    background-color: pink;
 }
 
 .search-condos-item {
     width: 30%;
     height: 300px;
     margin-top: 1%;
-    margin-left: 1%;
+    padding-right: 1%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
