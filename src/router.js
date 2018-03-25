@@ -8,6 +8,7 @@ import Home from './Components/Home/home'
 import SearchCondos from './Components/SearchCondos/searchcondos'
 import Room from './Components/Room/room'
 import Host from './Components/Host/host.js'
+import Create from './Components/Create/create.js'
 
 export default (
   <Switch>
@@ -15,5 +16,6 @@ export default (
     <Route component={SearchCondos} path="/search-condos"/>
     <Route component={Room} path="/room"/>
     <Route component={Host} path="/host"/>
+    <Route component={Create} path="/create"/>
   </Switch>
 )

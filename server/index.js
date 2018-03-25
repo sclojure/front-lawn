@@ -3,7 +3,7 @@ const express = require('express'),
     cors = require('cors'),
     massive = require('massive');
 const ctrlUsers = require('./controllers/controllerUsers');
-const ctrlHomes = require('./controllers/controllerHomes');
+const ctrlProperties = require('./controllers/controllerProperties');
 require('dotenv').config();
 
 const app = express();
@@ -16,9 +16,11 @@ app.use(cors());
 
 // ===== Database Connection ============
 
-massive(process.env.CONNECTION_STRING).then(db => {
-  app.set('db', db);
-});
+ massive(process.env.CONNECTION_STRING)
+  .then(db => {
+      app.set('db', db);
+    })
+  .catch(error => console.log(error));
 
 
 
@@ -33,18 +35,18 @@ app.put('/api/user', ctrlUsers.addUser)
 app.put('/api/user/update/:userId', ctrlUsers.updateUser)
 
 
-app.get('/api/homes', ctrlHomes.getHomesSearch)
-app.get('/api/home/:homeId', ctrlHomes.getHome)
-app.post('/api/add', ctrlHomes.addHome)
-app.put('/api/home/:homeId', ctrlHomes.updateHome)
-app.delete('/api/delete/:homeId', ctrlHomes.deleteHome)
-app.delete('/api/delete/:bookingId', ctrlHomes.deleteBooking)
+app.get('/api/properties', ctrlProperties.getPropertySearch)
+app.get('/api/property/:propertyId', ctrlProperties.getProperty)
+app.post('/api/add', ctrlProperties.addProperty)
+app.put('/api/property/:propertyId', ctrlProperties.updateProperty)
+app.delete('/api/delete/:propertyId', ctrlProperties.deleteProperty)
+app.delete('/api/delete/:bookingId', ctrlProperties.deleteBooking)
 
 
 
 
 // ===== Listen ===============
-const port = 3000;
+const port = 5432;
 app.listen(port, () => {
   console.log('I like to listen. I have learned a great deal from listening carefully. Most people never listen. Im listening on port: ', port);
 })

@@ -36,6 +36,9 @@ export default class SearchHeader extends Component {
                     1 recently viewed home
                     </div>
                 </div>
+                <div className="header-bottom-border">
+
+</div>
             </div>
         )
     }

@@ -111,6 +111,9 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="header-bottom-border">
+
+                </div>
             </div>
         )
     }

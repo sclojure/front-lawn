@@ -54,7 +54,7 @@ export default class SearchCondos extends Component {
                 <SearchHeader />
                 <div className="search-condos-container">
                     <div className="search-condos-left">
-                        <div className="search-condos-item">
+                        <div className="search-condos-item" onClick={() => this.getLat()}>
                             <div className="search-condos-picture">
                             <div className="heart-on">
                             ♡
@@ -73,7 +73,7 @@ export default class SearchCondos extends Component {
                                 <p>• Superhost</p>
                             </div>
                         </div>
-                        <div className="search-condos-item">
+                        <div className="search-condos-item" onClick={() => this.getLat()}>
                             <div className="search-condos-picture">
                             <div className="heart-on">
                             ♡
@@ -92,7 +92,7 @@ export default class SearchCondos extends Component {
                                 <p>• Superhost</p>
                             </div>
                         </div>
-                        <div className="search-condos-item">
+                        <div className="search-condos-item" onClick={() => this.getLat()}>
                             <div className="search-condos-picture">
                             <div className="heart-on">
                             ♡
@@ -111,7 +111,7 @@ export default class SearchCondos extends Component {
                                 <p>• Superhost</p>
                             </div>
                         </div>
-                        <div className="search-condos-item">
+                        <div className="search-condos-item" onClick={() => this.getLat()}>
                             <div className="search-condos-picture">
                             <div className="heart-on">
                             ♡

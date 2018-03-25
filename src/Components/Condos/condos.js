@@ -7,7 +7,7 @@ export default class Condos extends Component {
         return (
             <div>
                 <Home />
-                <div className="featured-condos-title">
+                <div className="featured-condos-title" id="condos">
                     <h1>Featured Condos</h1>
                 </div>
                 <div className="featured-condos-container">
@@ -129,7 +129,7 @@ export default class Condos extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="featured-condos-title">
+                <div className="featured-condos-title" id="cabins">
                     <h1>Featured Cabins</h1>
                 </div>
                 <div className="featured-condos-container">
@@ -251,7 +251,7 @@ export default class Condos extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="featured-condos-title">
+                <div className="featured-condos-title" id="timeshares">
                     <h1>Featured Timeshares</h1>
                 </div>
                 <div className="featured-condos-container">

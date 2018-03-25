@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 import '../Header/header.css'
 
 export default class HomeMain extends Component {
+
+    searchClick() {
+        window.location = "http://localhost:3000/search-condos"
+    }
+
     render() {
         return (
             <div>
@@ -12,7 +17,7 @@ export default class HomeMain extends Component {
                         <div className="header-search-container">
                             <div className="glass-icon" />
                             <input placeholder='Try "Salt Lake City"'></input>
-                            <div className="search-box">
+                            <div className="search-box" onClick={() => this.searchClick()}>
                                 <p>Search</p>
                             </div>
                         </div>
