@@ -16,11 +16,12 @@ app.use(cors());
 
 // ===== Database Connection ============
 
- massive(process.env.CONNECTION_STRING)
+massive(process.env.CONNECTION_STRING)
   .then(db => {
       app.set('db', db);
     })
-  .catch(error => console.log(error));
+  .catch(error => console.log(error))
+;
 
 
 
@@ -46,7 +47,7 @@ app.delete('/api/delete/:bookingId', ctrlProperties.deleteBooking)
 
 
 // ===== Listen ===============
-const port = 5432;
+const port = 3000;
 app.listen(port, () => {
   console.log('I like to listen. I have learned a great deal from listening carefully. Most people never listen. Im listening on port: ', port);
 })
