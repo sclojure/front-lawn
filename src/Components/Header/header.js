@@ -6,7 +6,6 @@ import { isTyped, complete, deleteThis } from '../../reducer'
 class Header extends Component {
 
     componentDidMount() {
-        console.log(this.props)
     }
 
     becomeHostHover() {

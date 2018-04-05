@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios"
-import './create.css'
+import './update.css'
 
-export default class Create extends Component {
+export default class Update extends Component {
 
     constructor(props) {
         super(props)
@@ -26,7 +26,7 @@ export default class Create extends Component {
     }
 
     submit() {
-        axios.post("http://localhost:3001/api/add", this.state)
+        axios.put(`http://localhost:3001/api/property/:${this.state.property_id}`, this.state)
     }
 
     render() {
@@ -35,10 +35,10 @@ export default class Create extends Component {
                 <div className="create-container">
                     <div className="create-left-container">
                         <div className="create-header">
-                            <div>What kind of place are you listing?</div>
+                            <div>Update your listing</div>
                         </div>
                         <div className="create-sub-header">
-                            <div>• First, let’s narrow things down</div>
+                            <div>• Choose a property type</div>
                         </div>
                         <div className="select" defaultValue="Condo" onChange={(e) => this.setState({ property_type: e.target.value })}>
                             <select id="language" className="create-select">
@@ -48,19 +48,19 @@ export default class Create extends Component {
                             </select>
                         </div>
                         <div className="create-sub-header">
-                            <div>• Name your property</div>
+                            <div>• Property name</div>
                         </div>
                         <div className="create-input">
                             <input placeholder="Name" onChange={(event) => this.setState({ property_name: event.target.value }, () => console.log(this.state))}></input>
                         </div>
                         <div className="create-sub-header">
-                            <div>• Say a little something about your property</div>
+                            <div>• Property summary</div>
                         </div>
                         <div className="create-input">
                             <input placeholder="Summary" onChange={(event) => this.setState({ summary: event.target.value }, () => console.log(this.state))}></input>
                         </div>
                         <div className="create-sub-header">
-                            <div>• What's your address?</div>
+                            <div>• Property address</div>
                         </div>
                         <div className="create-input">
                             <input placeholder="Street" onChange={(event) => this.setState({ street: event.target.value }, () => console.log(this.state))}></input>
@@ -78,13 +78,13 @@ export default class Create extends Component {
                             <input placeholder="Country" onChange={(event) => this.setState({ country: event.target.value }, () => console.log(this.state))}></input>
                         </div>
                         <div className="create-sub-header">
-                            <div>• How much would you like to rent for? (i.e. $50 a day)</div>
+                            <div>• Daily rent (i.e. $50 a day)</div>
                         </div>
                         <div className="create-input">
                             <input placeholder="Price per day" onChange={(event) => this.setState({ price: event.target.value }, () => console.log(this.state))}></input>
                         </div>
                         <div className="create-sub-header">
-                            <div>• Lastly, please copy & paste the URL of your home's picture</div>
+                            <div>• Property picture (in URL format)</div>
                         </div>
                         <div className="create-input">
                             <input placeholder="Picture URL" onChange={(event) => this.setState({ image_med: event.target.value }, () => console.log(this.state))}></input>
@@ -99,7 +99,7 @@ export default class Create extends Component {
 
                     </div>
                     <div className="create-right-container">
-                        <div className="create-homes-picture">
+                        <div className="update-homes-picture">
 
                         </div>
                     </div>

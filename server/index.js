@@ -37,6 +37,8 @@ app.put('/api/user/update/:userId', ctrlUsers.updateUser)
 
 
 app.get('/api/properties', ctrlProperties.getPropertySearch)
+app.get('/api/apartments', ctrlProperties.getApartments)
+app.get('/api/condos', ctrlProperties.getCondos)
 app.get('/api/property/:propertyId', ctrlProperties.getProperty)
 app.post('/api/add', ctrlProperties.addProperty)
 app.put('/api/property/:propertyId', ctrlProperties.updateProperty)
@@ -47,7 +49,7 @@ app.delete('/api/delete/:bookingId', ctrlProperties.deleteBooking)
 
 
 // ===== Listen ===============
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
   console.log('I like to listen. I have learned a great deal from listening carefully. Most people never listen. Im listening on port: ', port);
 })
