@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 import './header.css'
 import { connect } from "react-redux";
-import { isTyped, complete, deleteThis } from '../../reducer'
+import { search } from '../../reducer'
+import axios from 'axios'
 
 class Header extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            query: "San Francisco",
+            results: []
+        }
+    }
 
     componentDidMount() {
     }
@@ -28,6 +37,19 @@ class Header extends Component {
         const help = document.getElementById('help-menu')
         help.className = "help-menu-off"
     }
+
+    searchQuery() {
+        console.log('yes')
+        axios.get(`http://localhost:3001/api/properties/${this.state.query}`)
+        .then(res => {
+            console.log(res.data)
+            this.setState({results: res.data.slice(0,8)}, () => {
+                console.log(this.state)
+                this.props.search(this.state.results)
+            })
+            console.log(this.props)
+            })
+        }
 
     render() {
         return (
@@ -82,11 +104,11 @@ class Header extends Component {
                         <div className="housebnb-logo">
                         </div>
                         <div className="condos-search-bar-off" id="search-bar">
-                            <div className="glass-icon" />
-                            <input placeholder="Anywhere • Condos"></input>
+                            <div className="glass-icon" onClick={() => this.searchQuery()}></div>
+                            <input placeholder="Anywhere • Condos" onChange={(e) => this.setState({query: e.target.value})}></input>
                         </div>
                         <div className="room-search-bar-off" id="room-search-bar">
-                            <div className="glass-icon" />
+                            <div className="glass-icon"></div>
                             <input placeholder="Search"></input>
                         </div>
                         <div className="header-menu" id="header-menu">
@@ -124,4 +146,4 @@ function MapStateToProps(state) {
     )
 }
 
-export default connect(MapStateToProps, { isTyped, complete, deleteThis })(Header)
+export default connect(MapStateToProps, { search })(Header)

@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header/>
         {router}
         <Footer id="footer"/>
       </div>

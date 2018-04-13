@@ -36,7 +36,7 @@ app.put('/api/user', ctrlUsers.addUser)
 app.put('/api/user/update/:userId', ctrlUsers.updateUser)
 
 
-app.get('/api/properties', ctrlProperties.getPropertySearch)
+app.get('/api/properties/:query', ctrlProperties.getPropertySearch)
 app.get('/api/apartments', ctrlProperties.getApartments)
 app.get('/api/condos', ctrlProperties.getCondos)
 app.get('/api/property/:propertyId', ctrlProperties.getProperty)

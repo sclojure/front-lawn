@@ -1,5 +1,7 @@
+
 import React, { Component } from 'react'
 import './room.css'
+import axios from 'axios'
 import ScrollListener from 'react-scroll-listen'
 
 export default class Room extends Component {
@@ -7,6 +9,7 @@ export default class Room extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            property: [],
             scrollPosition: 0,
             hover: '',
             address: 'California',
@@ -18,7 +21,11 @@ export default class Room extends Component {
     }
 
     componentDidMount() {
-
+      axios.get(`http://localhost:3001/api/property/${this.props.match.params.id}`)
+      .then(res => {
+        this.setState({
+          property: res.data,
+        })
         const roomSearch = document.getElementById('room-search-bar')
         roomSearch.className = "room-search-bar-on"
         this.scroller()
@@ -38,7 +45,13 @@ export default class Room extends Component {
         pic6.style = "background-image: url('https://images.unsplash.com/photo-1484061263732-b8b0a5ae7db6?ixlib=rb-0.3.5&s=e4d68bc0bda14a8a8ac389686645bfaf&auto=format&fit=crop&w=1350&q=80')"
         pic7.style = "background-image: url('https://images.unsplash.com/photo-1496664444929-8c75efb9546f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a3a5e87267175e106954c7e76bd968b9&auto=format&fit=crop&w=1350&q=80')"
         pic8.style = "background-image: url('https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3c8c144e8e71f0226b0f87f157ba468a&auto=format&fit=crop&w=1351&q=80')"
+      }
+    ).catch(error => console.log(error))
+
     }
+
+
+
 
     scroller() {
         window.onscroll = () => {
@@ -52,15 +65,26 @@ export default class Room extends Component {
         }
     }
 
+
+     bookProperty() {
+      axios.put(`http://localhost:3001/api/property/book/${this.props.match.params.id}`)
+      .then(res => {
+        this.setState({
+          property: res.data,
+        })
+      }
+    ).catch(error => console.log(error))
+    }
     render() {
+      if (this.state.property[0]){
         return (
             <div>
                 <ScrollListener
                     onScroll={value => this.setState({ scrollPosition: value }, () => {
-                        console.log(this.state)
+                        //console.log(this.state)
                     })}
                 />
-                <div className="room-header-container" id="room-header">
+              <div className="room-header-container" id="room-header" style={{ backgroundImage: `url("${this.state.property[0].image_med}")` }}>
                     <div className="room-header-top">
                         <div className="room-header-top-box">
                             <div className="save-heart">⤿</div>
@@ -84,7 +108,9 @@ export default class Room extends Component {
                                 <div className="room-desc-container">
                                     <div className="desc-container">
                                         <div className="room-desc">
-                                            <div>Relax and unwind in comfort and style in this studio apartment, with the world famous Botanical Gardens just a short walk away. On a warm summer’s day, open the balcony doors and enjoy breakfast overlooking the beautiful secluded garden.</div>
+                                            <div>
+                                                {this.state.property[0].summary}
+                                            </div>
                                         </div>
                                         <div className="room-specs">
                                             <div>2 Rooms</div>
@@ -135,7 +161,6 @@ export default class Room extends Component {
                                             <div className="ad-plus">
                                                 <div>Plus</div>
                                             </div>
-
                                         </div>
                                         <div className="ad-subheader">
                                             <div>A selection of homes verified for quality & comfort</div>
@@ -147,8 +172,6 @@ export default class Room extends Component {
                                             <div>Learn more</div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
 
@@ -159,23 +182,10 @@ export default class Room extends Component {
                                     <div>Location</div>
                                 </div>
                                 <div className="location-subtext">
-                                    <div>West Los Angeles, Los Angeles, California, United States</div>
-                                </div>
-                                <div className="location-body-container">
-                                    <div className="location-body-left">
-                                        <div>West Los Angeles is very walkable. The home is in a single family neighborhood There are grocery stores and restaurants within a mile of the house, and Santa Monica pier and beach are nearby. Plenty of free street parking within a block of the house.</div>
-                                    </div>
-                                    <div className="location-body-right-container">
-                                        <div className="location-body-right-header">
-                                            <div>Distance from Los Angeles International Airport</div>
-                                        </div>
-                                        <div className="location-body-right-body">
-                                            <div>13 mins by car without traffic</div>
-                                        </div>
-                                    </div>
+                                    <div>{this.state.property[0].city}, {this.state.property[0].state}, {this.state.property[0].country}</div>
                                 </div>
                             </div>
-                            <img id="map" src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.lat},${this.state.long}&zoom=13&size=${this.state.size}&maptype=roadmap&markers=color:green%7Clabel:G%7C${this.state.lat},${this.state.long}&key=AIzaSyAVpnn99NumKKO-dn2bvgA6PC4fDFB3pTs`} />
+                            <img id="map" src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.property[0].latitude},${this.state.property[0].longitude}&zoom=13&size=${this.state.size}&maptype=roadmap&markers=color:green%7Clabel:G%7C${this.state.property[0].latitude},${this.state.property[0].longitude}&key=AIzaSyAVpnn99NumKKO-dn2bvgA6PC4fDFB3pTs`} />
                             <div className="room-map-footer" />
                         </div>
                     </div>
@@ -184,7 +194,7 @@ export default class Room extends Component {
                             <div className="rent-inner-box">
                                 <div className="room-price-container">
                                     <div className="price-per-night-container">
-                                        <div className="price-per-night-font-1">$50</div>
+                                        <div className="price-per-night-font-1">${this.state.property[0].price}</div>
                                         <div className="price-per-night-font-2">per night</div>
                                     </div>
                                     <div className="price-per-night-stars-container">
@@ -235,8 +245,8 @@ export default class Room extends Component {
                                     </div>
                                 </div>
                                 <div className="rent-button-container">
-                                    <div className="rent-button">
-                                        <div>Book</div>
+                                    <div className="rent-button" onClick={() => this.bookProperty()}>
+                                        <div >{this.state.property[0].booked ? 'Unavailable' : 'Book'}</div>
                                     </div>
                                 </div>
 
@@ -246,5 +256,10 @@ export default class Room extends Component {
                 </div>
             </div>
         )
+    } else{
+      return(
+        <div></div>
+      )
     }
+  }
 }

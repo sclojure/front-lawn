@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import './searchcondos.css'
 import axios from 'axios'
+import { connect } from "react-redux";
 
 import SearchHeader from '../SearchHeader/searchheader'
 
-export default class SearchCondos extends Component {
+class SearchCondos extends Component {
 
     constructor(props) {
         super(props)
@@ -13,16 +14,32 @@ export default class SearchCondos extends Component {
             address: 'California',
             lat: "40.761806",
             long: "-111.890534",
-            size: "600x600"
+            size: "600x600",
+            searchResults: []
         }
     }
 
+    componentWillReceiveProps() {
+
+        this.setState({searchResults: [this.props.searchResults]})
+
+    }
+
     componentDidMount() {
+
+        axios.get(`http://localhost:3001/api/property/${this.props.match.params.id}`)
+        .then(res => {
+          this.setState({
+            property: res.data,
+          })
+
         const footer1 = document.getElementById('footer-1')
         const footer2 = document.getElementById('footer-2')
         footer1.style = "display: none;"
         footer2.style = "display: none;"
-    }
+        this.setState({searchResults: [this.props.searchResults.data]})
+    })
+}
 
     addressInput(e) {
         this.setState({address: e}, () => console.log(this.state))
@@ -49,6 +66,7 @@ export default class SearchCondos extends Component {
         })}
 
     render() {
+        console.log('test', this.props, 'state is here', this.state)
         return (
             <div>
                 <SearchHeader />
@@ -73,6 +91,14 @@ export default class SearchCondos extends Component {
                                 <p>• Superhost</p>
                             </div>
                         </div>
+
+
+
+
+                {this.state.searchResults.map(item => {
+                                            
+                    return (
+                        <div className="search-condos-item">
                         <div className="search-condos-item" onClick={() => this.getLat()}>
                             <div className="search-condos-picture">
                             <div className="heart-on">
@@ -91,45 +117,15 @@ export default class SearchCondos extends Component {
                                 </div>
                                 <p>• Superhost</p>
                             </div>
+
                         </div>
-                        <div className="search-condos-item" onClick={() => this.getLat()}>
-                            <div className="search-condos-picture">
-                            <div className="heart-on">
-                            ♡
-                            </div>
-                                <div className="left-arrow-off" id="left-arrow">⇚</div>
-                                <div className="right-arrow-off" id="right-arrow">⇛</div>
-                            </div>
-                            <div className="search-condo-rooms-font">2 BEDS, 1 BATH</div>
-                            <div className="search-condo-name-font">Vestibulum elementum</div>
-                            <div className="search-condo-price-font">$120</div>
-                            <div className="search-ratings-container">
-                                <div className="search-stars-container">
-                                    <p className="search-star-color">★★★★★</p>
-                                    <p>(139)</p>
-                                </div>
-                                <p>• Superhost</p>
-                            </div>
                         </div>
-                        <div className="search-condos-item" onClick={() => this.getLat()}>
-                            <div className="search-condos-picture">
-                            <div className="heart-on">
-                            ♡
-                            </div>
-                                <div className="left-arrow-off" id="left-arrow">⇚</div>
-                                <div className="right-arrow-off" id="right-arrow">⇛</div>
-                            </div>
-                            <div className="search-condo-rooms-font">2 BEDS, 1 BATH</div>
-                            <div className="search-condo-name-font">Vestibulum elementum</div>
-                            <div className="search-condo-price-font">$120</div>
-                            <div className="search-ratings-container">
-                                <div className="search-stars-container">
-                                    <p className="search-star-color">★★★★★</p>
-                                    <p>(139)</p>
-                                </div>
-                                <p>• Superhost</p>
-                            </div>
-                        </div>
+                    )
+                })}
+                
+
+
+
                     </div>
                     <div className="search-condos-right">
                         <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.lat},${this.state.long}&zoom=13&size=${this.state.size}&maptype=roadmap&markers=color:green%7Clabel:G%7C41.242064,-111.947893&key=AIzaSyAVpnn99NumKKO-dn2bvgA6PC4fDFB3pTs`} />
@@ -142,3 +138,12 @@ export default class SearchCondos extends Component {
         )
     }
 }
+
+
+function MapStateToProps(state) {
+    return (
+        state
+    )
+}
+
+export default connect(MapStateToProps)(SearchCondos)

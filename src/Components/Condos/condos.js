@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import Home from '../Home/home'
 import "./condos.css"
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {chosen} from '../../reducer.js'
+import {Link} from 'react-router-dom'
 
-export default class Condos extends Component {
+class Condos extends Component {
 
     constructor(props) {
         super(props)
@@ -11,12 +14,25 @@ export default class Condos extends Component {
             apartments: [],
             condos: [],
             houses: [],
-            apt1: "",
-            apt1image: ""
+            chosenHomeName: "",
+            chosenHomeId: "",
+            chosenHomeType: "",
+            chosenHomePrice: "",
+            chosenHomeSummary: "",
+            chosenHomePic: "",
+            chosenHomeStreet: "",
+            chosenHomeCity: "",
+            chosenHomeState: "",
+            chosenHomeCountry: "",
+            chosenHomeZip: "",
+            chosenHomeLat: "",
+            chosenHomeLong: "",
+            chosenHomeBooked: ""
         }
     }
 
     componentDidMount() {
+        console.log(this.props)
         axios.get('http://localhost:3001/api/apartments')
             .then(res => {
                 const rawApartments = [res.data]
@@ -32,8 +48,40 @@ export default class Condos extends Component {
 
     }
 
-    propertyClick(price) {
-        console.log(price)
+    propertyClick(name, id, type, price, summary, pic, street, city, state, country, zip, lat, long, booked) {
+        this.setState({
+            chosenHomeName: name,
+            chosenHomeId: id,
+            chosenHomeType: type,
+            chosenHomePrice: price,
+            chosenHomeSummary: summary,
+            chosenHomePic: pic,
+            chosenHomeStreet: street,
+            chosenHomeCity: city,
+            chosenHomeState: state,
+            chosenHomeCountry: country,
+            chosenHomeZip: zip,
+            chosenHomeLat: lat,
+            chosenHomeLong: long,
+            chosenHomeBooked: booked
+        }, () => this.props.chosen(
+            this.state.chosenHomeName,
+            this.state.chosenHomeId,
+            this.state.chosenHomeType,
+            this.state.chosenHomePrice,
+            this.state.chosenHomeSummary,
+            this.state.chosenHomePic,
+            this.state.chosenHomeStreet,
+            this.state.chosenHomeCity,
+            this.state.chosenHomeState,
+            this.state.chosenHomeCountry,
+            this.state.chosenHomeZip,
+            this.state.chosenHomeLat,
+            this.state.chosenHomeLong,
+            this.state.chosenHomeBooked,
+        ))
+        console.log(this.props)
+        window.location = "http://localhost:3000/room"
     }
 
     render() {
@@ -47,8 +95,10 @@ export default class Condos extends Component {
                 {this.state.apartments.map(item => {
                     return (
                             <div className="featured-condo">
-                        <div className="featured-condo-pic" style={{ backgroundImage: `url("${item.image_med}")` }} onClick={() => this.propertyClick(item.price)}>
+                            <a href={`/room/${item.property_id}`}>
+                        <div className="featured-condo-pic" style={{ backgroundImage: `url("${item.image_med}")` }}>
                         </div>
+                        </a>
                         <p className="featured-condo-rooms-font">{item.city}</p>
                         <p className="featured-condo-name-font">{item.property_name}</p>
                         <p className="featured-condo-price-font">${item.price}</p>
@@ -70,8 +120,10 @@ export default class Condos extends Component {
                 {this.state.condos.map(item => {
                     return (
                             <div className="featured-condo">
+                        <a href={`/room/${item.property_id}`}>
                         <div className="featured-condo-pic" style={{ backgroundImage: `url("${item.image_med}")` }}>
                         </div>
+                        </a>
                         <p className="featured-condo-rooms-font">{item.city}</p>
                         <p className="featured-condo-name-font">{item.property_name}</p>
                         <p className="featured-condo-price-font">${item.price}</p>
@@ -93,8 +145,10 @@ export default class Condos extends Component {
                 {this.state.apartments.map(item => {
                     return (
                             <div className="featured-condo">
+                        <a href={`/room/${item.property_id}`}>
                         <div className="featured-condo-pic" style={{ backgroundImage: `url("${item.image_med}")` }}>
                         </div>
+                        </a>
                         <p className="featured-condo-rooms-font">{item.city}</p>
                         <p className="featured-condo-name-font">{item.property_name}</p>
                         <p className="featured-condo-price-font">${item.price}</p>
@@ -114,3 +168,11 @@ export default class Condos extends Component {
         )
     }
 }
+
+function MapStateToProps(state) {
+    return state
+}
+
+export default connect(MapStateToProps, {
+    chosen
+})(Condos)
