@@ -1,13 +1,23 @@
 import React, {Component} from 'react'
 import './register.css'
+import axios from 'axios'
 
 export default class Register extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-
+            username: "Logan number 2",
+            password: "password",
+            first_name: "Logan 2",
+            last_name: "Smith 2",
+            bio: "Younger boy"
         }
+    }
+ 
+    register() {
+        axios.post('http://localhost:3000/api/auth/register', this.state)
+        .then(res => console.log(res))
     }
 
     render() {
@@ -35,7 +45,7 @@ export default class Register extends Component {
                         </div>
                         <input className="register-input" placeholder="Bio"></input>
                         <div className="register-button-container">
-                            <div className="register-button">
+                        <div className="register-button" onClick={() => this.register()}>
                                 <div>Register</div>
                             </div>
                         </div>

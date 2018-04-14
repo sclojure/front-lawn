@@ -51,43 +51,43 @@ export default class Create extends Component {
                             <div>• Name your property</div>
                         </div>
                         <div className="create-input">
-                            <input placeholder="Name" onChange={(event) => this.setState({ property_name: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="Name" onChange={(event) => this.setState({ property_name: event.target.value })}></input>
                         </div>
                         <div className="create-sub-header">
                             <div>• Say a little something about your property</div>
                         </div>
                         <div className="create-input">
-                            <input placeholder="Summary" onChange={(event) => this.setState({ summary: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="Summary" onChange={(event) => this.setState({ summary: event.target.value })}></input>
                         </div>
                         <div className="create-sub-header">
                             <div>• What's your address?</div>
                         </div>
                         <div className="create-input">
-                            <input placeholder="Street" onChange={(event) => this.setState({ street: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="Street" onChange={(event) => this.setState({ street: event.target.value })}></input>
                         </div>
                         <div className="create-input-margin">
-                            <input placeholder="City" onChange={(event) => this.setState({ city: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="City" onChange={(event) => this.setState({ city: event.target.value })}></input>
                         </div>
                         <div className="create-input-margin">
-                            <input placeholder="State" onChange={(event) => this.setState({ state: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="State" onChange={(event) => this.setState({ state: event.target.value })}></input>
                         </div>
                         <div className="create-input-margin">
-                            <input placeholder="ZIP Code" onChange={(event) => this.setState({ postal_code: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="ZIP Code" onChange={(event) => this.setState({ postal_code: event.target.value })}></input>
                         </div>
                         <div className="create-input-margin">
-                            <input placeholder="Country" onChange={(event) => this.setState({ country: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="Country" onChange={(event) => this.setState({ country: event.target.value })}></input>
                         </div>
                         <div className="create-sub-header">
                             <div>• How much would you like to rent for? (i.e. $50 a day)</div>
                         </div>
                         <div className="create-input">
-                            <input placeholder="Price per day" onChange={(event) => this.setState({ price: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="Price per day" onChange={(event) => this.setState({ price: event.target.value })}></input>
                         </div>
                         <div className="create-sub-header">
                             <div>• Lastly, please copy & paste the URL of your home's picture</div>
                         </div>
                         <div className="create-input">
-                            <input placeholder="Picture URL" onChange={(event) => this.setState({ image_med: event.target.value }, () => console.log(this.state))}></input>
+                            <input placeholder="Picture URL" onChange={(event) => this.setState({ image_med: event.target.value })}></input>
                         </div>
                         <div className="create-button-container">
                             <div className="create-button">

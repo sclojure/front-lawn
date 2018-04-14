@@ -9,12 +9,15 @@ class Header extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            query: "San Francisco",
-            results: []
+            query: "",
+            results: [],
+            username: "",
+            password: ""
         }
     }
 
-    componentDidMount() {
+    logIn(username, password) {
+
     }
 
     becomeHostHover() {
@@ -37,19 +40,6 @@ class Header extends Component {
         const help = document.getElementById('help-menu')
         help.className = "help-menu-off"
     }
-
-    searchQuery() {
-        console.log('yes')
-        axios.get(`http://localhost:3001/api/properties/${this.state.query}`)
-        .then(res => {
-            console.log(res.data)
-            this.setState({results: res.data.slice(0,8)}, () => {
-                console.log(this.state)
-                this.props.search(this.state.results)
-            })
-            console.log(this.props)
-            })
-        }
 
     render() {
         return (
@@ -127,7 +117,9 @@ class Header extends Component {
                                 <p>Sign up</p>
                             </div>
                             <div className="header-menu-item">
-                                <p>Log in</p>
+                                <input placeholder="username" onChange={(e) => this.setState({username: e.target.value})}></input>
+                                <input placeholder="password" onChange={(e) => this.setState({password: e.target.value})}></input>
+                                <button onClick={() => this.logIn(this.state.username, this.state.password)}>Log in</button>
                             </div>
                         </div>
                     </div>
@@ -140,10 +132,8 @@ class Header extends Component {
     }
 }
 
-function MapStateToProps(state) {
-    return (
-        state
-    )
+function mapStateToProps(state) {
+    return state
 }
 
-export default connect(MapStateToProps, { search })(Header)
+export default connect(mapStateToProps, { search })(Header)

@@ -32,7 +32,6 @@ class Condos extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         axios.get('http://localhost:3001/api/apartments')
             .then(res => {
                 const rawApartments = [res.data]
@@ -44,7 +43,7 @@ class Condos extends Component {
                 const rawCondos = [res.data]
                 const eightCondos = rawCondos[0].splice(0, 8)
                 this.setState({ condos: eightCondos})
-            }), () => console.log(this.state)
+            })
 
     }
 
@@ -64,23 +63,7 @@ class Condos extends Component {
             chosenHomeLat: lat,
             chosenHomeLong: long,
             chosenHomeBooked: booked
-        }, () => this.props.chosen(
-            this.state.chosenHomeName,
-            this.state.chosenHomeId,
-            this.state.chosenHomeType,
-            this.state.chosenHomePrice,
-            this.state.chosenHomeSummary,
-            this.state.chosenHomePic,
-            this.state.chosenHomeStreet,
-            this.state.chosenHomeCity,
-            this.state.chosenHomeState,
-            this.state.chosenHomeCountry,
-            this.state.chosenHomeZip,
-            this.state.chosenHomeLat,
-            this.state.chosenHomeLong,
-            this.state.chosenHomeBooked,
-        ))
-        console.log(this.props)
+        })
         window.location = "http://localhost:3000/room"
     }
 
@@ -169,10 +152,8 @@ class Condos extends Component {
     }
 }
 
-function MapStateToProps(state) {
+function mapStateToProps(state) {
     return state
 }
 
-export default connect(MapStateToProps, {
-    chosen
-})(Condos)
+export default connect(mapStateToProps)(Condos)

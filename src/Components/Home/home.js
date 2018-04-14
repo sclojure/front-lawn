@@ -5,6 +5,10 @@ import './home.css'
 
 export default class Home extends Component {
 
+    componentDidMount() {
+        axios.get('http://localhost:3001/api/user/:userId', {withCredentials: true} )
+    }
+
     condoScroll() {
         const element = document.getElementById('apartments')
         const viewportOffset = element.getBoundingClientRect();

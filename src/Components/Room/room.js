@@ -80,9 +80,7 @@ export default class Room extends Component {
         return (
             <div>
                 <ScrollListener
-                    onScroll={value => this.setState({ scrollPosition: value }, () => {
-                        //console.log(this.state)
-                    })}
+                    onScroll={value => this.setState({ scrollPosition: value })}
                 />
               <div className="room-header-container" id="room-header" style={{ backgroundImage: `url("${this.state.property[0].image_med}")` }}>
                     <div className="room-header-top">
